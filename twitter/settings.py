@@ -25,6 +25,7 @@ if environ.has_key('DATABASE_URL'):
     EMAIL_HOST_PASSWORD = '48b4fdb3e4902cf3'
     EMAIL_PORT = '2525'
     EMAIL_USE_TLS = False
+    DEFAULT_FROM_EMAIL = 'emad.shaaban92@gmail.com'
 else:
     DATABASES = {
         "default": {
