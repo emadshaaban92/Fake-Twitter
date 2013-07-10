@@ -20,11 +20,11 @@ if environ.has_key('DATABASE_URL'):
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    EMAIL_HOST = 'mailtrap.io'
-    EMAIL_HOST_USER = 'fake-twitter-mail-0cc5b61bbf518f05'
-    EMAIL_HOST_PASSWORD = '48b4fdb3e4902cf3'
-    EMAIL_PORT = '2525'
-    EMAIL_USE_TLS = False
+    EMAIL_HOST = 'smtp.mailgun.org'
+    EMAIL_HOST_USER = 'postmaster@fake-twitter-mail.mailgun.org'
+    EMAIL_HOST_PASSWORD = '5wh2nswvctr3'
+    EMAIL_PORT = '587'
+    EMAIL_USE_TLS = True
     DEFAULT_FROM_EMAIL = 'emad.shaaban92@gmail.com'
 else:
     DATABASES = {
