@@ -34,9 +34,15 @@ else:
         }
     #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+#EMAIL_BACKEND = "postmark.backends.PostmarkBackend"
+#POSTMARK_API_KEY = '3f0a6af2-d902-4f9d-a0b6-84065d4192e4'
+EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'
+POSTMARK_API_KEY    = '3f0a6af2-d902-4f9d-a0b6-84065d4192e4'
+POSTMARK_SENDER     = 'emad_gad@alex-comm.edu.eg'
+#POSTMARK_TEST_MODE  = False
 
-EMAIL_BACKEND = "postmark.backends.PostmarkBackend"
-POSTMARK_API_KEY = '3f0a6af2-d902-4f9d-a0b6-84065d4192e4'
+
+DEFAULT_FROM_EMAIL = 'emad_gad@alex-comm.edu.eg'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -143,6 +149,7 @@ INSTALLED_APPS = (
     'registration',
     'rest_framework',
     'postmark',
+
 
 
     # 3rd party apps

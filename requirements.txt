@@ -34,6 +34,7 @@ psycopg2==2.5.1
 pycrypto==2.6
 python-dateutil==2.1
 python-openid==2.2.5
+python-postmark==0.3.2
 pytz==2013b
 requests==1.2.3
 shortuuid==0.3
