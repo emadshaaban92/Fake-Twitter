@@ -20,10 +20,7 @@ if environ.has_key('DATABASE_URL'):
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
-    MAILGUN_ACCESS_KEY = 'key-4xh2lyelu050llcfnc-valnx2bihgq66'
-    MAILGUN_SERVER_NAME = 'samples.mailgun.org/messages'
-    DEFAULT_FROM_EMAIL = 'emad@fake-twitter-mail.mailgun.org'
+    
 else:
     DATABASES = {
         "default": {
@@ -35,10 +32,11 @@ else:
             "PORT": "",
             }
         }
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-
+EMAIL_BACKEND = "postmark.backends.PostmarkBackend"
+POSTMARK_API_KEY = '3f0a6af2-d902-4f9d-a0b6-84065d4192e4'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -144,6 +142,7 @@ INSTALLED_APPS = (
     'twitter',
     'registration',
     'rest_framework',
+    'postmark',
 
 
     # 3rd party apps
