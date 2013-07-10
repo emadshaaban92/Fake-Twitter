@@ -22,10 +22,10 @@ if environ.has_key('DATABASE_URL'):
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     EMAIL_HOST = 'smtp.mailgun.org'
     EMAIL_HOST_USER = 'postmaster@fake-twitter-mail.mailgun.org'
-    EMAIL_HOST_PASSWORD = '5wh2nswvctr3'
-    EMAIL_PORT = '587'
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = 'emad.shaaban92@gmail.com'
+    EMAIL_HOST_PASSWORD = '123456'
+    EMAIL_PORT = '25'
+    EMAIL_USE_TLS = False
+    DEFAULT_FROM_EMAIL = 'emad@fake-twitter-mail.mailgun.org'
 else:
     DATABASES = {
         "default": {
