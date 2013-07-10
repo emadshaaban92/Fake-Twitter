@@ -17,7 +17,6 @@ django-mailgun==0.2.2
 django-model-utils==1.4.0
 django-notification==1.0
 django-oauth2-provider==0.2.6
-django-postmark==0.1.6
 django-social-auth==0.7.23
 django-tastypie==0.9.15
 djangorestframework==2.3.6
