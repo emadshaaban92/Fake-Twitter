@@ -1,7 +1,9 @@
 var TweetView = Backbone.View.extend({
 	className : 'alert alert-info alert-block',
 	render : function(){
-		this.$el.html("<button type='button' class='close'>&times;</button>" +
+		this.$el.html(""+
+			
+			"<button type='button' class='close'>&times;</button>" +
 			"<h1>" + this.model.get("text") + "</h1> " +
 			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>");
 		
@@ -14,11 +16,15 @@ var TweetView = Backbone.View.extend({
 	},
 	events : {
 		'click button' : function(){
-			this.model.destroy();
+			if(this.model.get("editable")){
+				this.model.destroy();
+			}
 		}
 	},
 	remove: function(){
-		this.$el.remove();
+		if(this.model.get("editable")){
+			this.$el.remove();
+		}
 	}
 });
 

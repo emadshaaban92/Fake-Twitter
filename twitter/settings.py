@@ -148,9 +148,7 @@ INSTALLED_APPS = (
     'twitter',
     'registration',
     'rest_framework',
-    'postmark',
-
-
+    
 
     # 3rd party apps
     'debug_toolbar',

@@ -8,6 +8,8 @@ var Tweets = Backbone.Collection.extend({
 			this.on('remove', this.hideModel);
 		},
 		hideModel: function(model){
-			model.trigger('hide');
+      if(model.get("editable")){
+			 model.trigger('hide');
+      }
 		}
     });
