@@ -20,11 +20,9 @@ if environ.has_key('DATABASE_URL'):
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    EMAIL_HOST = 'smtp.mailgun.org'
-    EMAIL_HOST_USER = 'postmaster@fake-twitter-mail.mailgun.org'
-    EMAIL_HOST_PASSWORD = '123456'
-    EMAIL_PORT = '25'
-    EMAIL_USE_TLS = False
+    EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+    MAILGUN_ACCESS_KEY = 'key-4xh2lyelu050llcfnc-valnx2bihgq66'
+    #MAILGUN_SERVER_NAME = 'SERVER-NAME'
     DEFAULT_FROM_EMAIL = 'emad@fake-twitter-mail.mailgun.org'
 else:
     DATABASES = {
