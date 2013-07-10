@@ -1,0 +1,17 @@
+<html>
+<head><title>{{object.get_full_name}}</title></head>
+
+<body>
+
+<h1>{{object.username}}</h1>
+
+<h1> {{object.email}}</h1>
+
+<ul>
+{% for item in object.get_tweets %}
+    <li>{{ item.text }}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

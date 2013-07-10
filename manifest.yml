@@ -1,0 +1,14 @@
+---
+applications:
+  .:
+    name: twitter-fake
+    framework:
+      name: django
+      info:
+        mem: 128M
+        description: Python Django Application
+        exec: 
+    infra: aws
+    url: ${name}.${target-base}
+    mem: '256'
+    instances: 1

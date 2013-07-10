@@ -1,0 +1,123 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Fake Twitter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Fake Twitter Prototype using Django">
+	<meta name="author" content="Emad Shaaban">
+
+	<link href="{% static 'twitter/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'twitter/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+	<link href="{% static 'twitter/css/font-awesome.min.css' %}" rel="stylesheet">
+	<link href="{% static 'twitter/css/bootswatch.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+ <!-- Navbar
+    ================================================== -->
+ <div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container">
+       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </a>
+       <a class="brand" href="/">Fake Twitter</a>
+       <div class="nav-collapse collapse" id="main-menu">
+        <ul class="nav" id="main-menu-left">
+          <li><a href="#">News</a></li>
+          <li><a id="swatch-link" href="#">About</a></li>
+        </ul>
+        <ul class="nav pull-right" id="main-menu-right">
+          {% if user.is_authenticated %}
+          <li><a rel="tooltip" href="#" data-original-title="">
+            Welcome, {% if user.first_name %}
+                        {{user.first_name}}
+                      {% else %}
+                        {{user.username}}
+                      {% endif %} 
+            <i class="icon-share-alt"></i></a>
+          </li>
+          <li><a rel="tooltip" href="/accounts/logout"  data-original-title="Don't do this please !">Sign Out <i class="icon-share-alt"></i></a>
+          </li>
+          {% else %}
+          <li><a rel="tooltip" href="/accounts/register/" data-original-title="Please take a minute to register">Sign Up <i class="icon-share-alt"></i></a></li>
+          <li><a rel="tooltip" href="/accounts/login"  data-original-title="Please login to tweet">Sign In <i class="icon-share-alt"></i></a>
+          </li>
+          {% endif %}
+          
+        </ul>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+
+<div class="container">
+  <br /> <br /> <br />
+
+  {% block content %}
+  
+
+  {% endblock %}
+	<br><br><br><br>
+
+     <!-- Footer
+      ================================================== -->
+      <hr>
+
+      <footer id="footer">
+        <p class="pull-right"><a href="#top">Back to top</a></p>
+        <div class="links">
+          <a href="http://news.bootswatch.com/" onclick="pageTracker._link(this.href); return false;">Blog</a>
+          <a href="http://feeds.feedburner.com/bootswatch">RSS</a>
+          <a href="https://twitter.com/thomashpark">Twitter</a>
+          <a href="https://github.com/thomaspark/bootswatch/">GitHub</a>
+          <a href="https://github.com/thomaspark/bootswatch/tree/gh-pages/swatchmaker">Swatchmaker</a>
+          <a href="http://news.bootswatch.com/post/22193315172/bootswatch-api">API</a>
+          
+        </div>
+        Made by <a href="#">Emad Shaaban</a>. Contact him <a href="mailto:emad.shaaban92@gmail.com">emad.shaaban92@gmail.com</a>.<br />
+        Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>.<br />
+        Based on <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>. Hosted on <a href="http://pages.github.com/">GitHub</a>. Icons from <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts">Google</a>. Favicon by <a href="https://twitter.com/geraldhiller">Gerald Hiller</a>.<p></p>
+      </footer>
+
+</div><!-- /container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'twitter/js/jquery.min.js' %}"></script>
+    <script src="{% static 'twitter/js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'twitter/js/jquery.smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'twitter/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'twitter/js/bootswatch.js' %}"></script>
+
+    <script src="{% static 'twitter/js/libs/underscore/underscore-min.js' %}"></script>
+    <script src="{% static 'twitter/js/libs/backbone/backbone-min.js' %}"></script>
+    <script src="{% static 'twitter/js/libs/backbone/backbone-tastypie.js' %}"></script>
+    <script src="{% static 'twitter/js/libs/backbone/backbone-mediator.js' %}"></script>
+    <script src="{% static 'twitter/js/libs/backbone/supermodel.js' %}"></script>
+    <script src="{% static 'twitter/js/libs/moment/moment.min.js' %}"></script>
+
+    
+    
+    
+  {% block scripts %}
+  
+
+  {% endblock %}    
+
+</body>
+</html>
