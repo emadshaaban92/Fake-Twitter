@@ -1,10 +1,8 @@
 var Tweets = Backbone.Collection.extend({
-        urlRoot: '/api/rest/v1/tweet/',
-        model: function(attrs, options) {
-    		return Tweet.create(attrs, options);
-  		},
+      urlRoot: '/api/rest/v1/tweet/',
+      model: Tweet,
 
-  		initialize: function(){
+  	initialize: function(){
 			this.on('remove', this.hideModel);
 		},
 		hideModel: function(model){
@@ -12,4 +10,13 @@ var Tweets = Backbone.Collection.extend({
        model.trigger('hide');
       }
 		}
-    });
+});
+
+
+var Tweeters = Backbone.Collection.extend({
+      urlRoot: '/api/rest/v1/tweeter/',
+      model: Tweeter
+
+      
+});
+

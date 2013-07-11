@@ -5,8 +5,9 @@ var TweetView = Backbone.View.extend({
 		var _template = "" +
 			"{{#editable}}" +
 			"<button type='button' class='close'>&times;</button>"+
+			"<button type='button' class='close'>&times;</button>"+
 			"{{/editable}}" +
-			"<h1>" + this.model.get("text") + "</h1> " +
+			"<h3><strong>{{name}} </strong> : {{text}}</h3> " +
 			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"
 		
 		rendered = Mustache.to_html(_template, this.model.toJSON());

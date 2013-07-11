@@ -1,6 +1,7 @@
 from tastypie.resources import ModelResource, ALL
 from tastypie.authorization import Authorization
 from tastypie.authentication import SessionAuthentication
+from tastypie import fields
 
 from .Auth import UserObjectsOnlyAuthorization
 
@@ -8,6 +9,7 @@ from twitter.models import Tweet, Tweeter
 
 
 class TweetResource(ModelResource):
+    #tweeter_id = fields.IntegerField(readonly=True)
     class Meta:
         queryset = Tweet.objects.all()
         resource_name = 'tweet'
@@ -25,6 +27,8 @@ class TweetResource(ModelResource):
     def dehydrate(self, bundle):
         # Include the request IP in the bundle.
         bundle.data['editable'] = (bundle.obj.tweeter_id == bundle.request.user.id)
+        bundle.data['tweeter_id'] = bundle.obj.tweeter_id
+        bundle.data['name'] = bundle.obj.tweeter.username
         return bundle
 
 class TweeterResource(ModelResource):

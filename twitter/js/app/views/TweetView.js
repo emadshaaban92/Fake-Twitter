@@ -2,9 +2,9 @@ var TweetView = Backbone.View.extend({
 	className : 'alert alert-info alert-block',
 	render : function(){
 		this.$el.html(""+
-			
+
 			"<button type='button' class='close'>&times;</button>" +
-			"<h1>" + this.model.get("text") + "</h1> " +
+			"<p>" + this.model.get("text") + "</p> " +
 			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>");
 		
 	},

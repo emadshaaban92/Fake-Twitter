@@ -8,11 +8,12 @@ tweets.fetch({
 	}
 });
 
+
 $(document).ready(function() {
 
 	$("#tweet-btn").click(function(){
 		//alert($("#tweet-input").val())
-		var tweet = Tweet.create({text : $("#tweet-input").val()});
+		var tweet = new Tweet({text : $("#tweet-input").val()});
 		tweet.save();
 		tweets.add(tweet);
 	});
