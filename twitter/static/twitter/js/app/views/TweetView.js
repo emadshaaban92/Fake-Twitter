@@ -8,9 +8,9 @@ var TweetView = Backbone.View.extend({
 			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"+
 			"</div>" +
 			"{{#editable}}" +
-			"<div class='span1 offset2'>"+
-			"<span id='edit-button' class='badge badge-info'>Edit</span>"+
-			"<span id='delete-button' class='badge badge-important'>x</span>"+
+			"<div class='span1 offset2 btn-group'>"+
+			"<button id='edit-button' class='badge badge-info inline'>Edit</button>"+
+			"<button id='delete-button' class='badge badge-important inline'>x</button>"+
 			"</div>"+
 			"{{/editable}}"
 			
@@ -44,9 +44,9 @@ var TweetView = Backbone.View.extend({
 				"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>" +
 				"</div>" +
 				"{{#editable}}" +
-				"<div class='span1 offset2'>"+
-				"<button id='delete-button' class='btn btn-danger span1'> Delete </button>"+
-				"<button id='save-button' class='btn btn-success span1'> Save </button>"+
+				"<div class='span1 offset2 btn-group'>"+
+				"<button id='save-button' class='badge badge-success'>Save</button>"+
+				"<button id='delete-button' class='badge badge-important'>x</button>"+
 				"</div>"+
 				"{{/editable}}"
 				
