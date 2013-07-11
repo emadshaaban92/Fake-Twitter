@@ -9,8 +9,8 @@ var TweetView = Backbone.View.extend({
 			"</div>" +
 			"{{#editable}}" +
 			"<div class='span1 offset2'>"+
-			"<button id='delete-button' class='btn btn-danger span1'>Delete</button>"+
-			"<button id='edit-button' class='btn btn-primary span1'>Edit</button>"+
+			"<span id='edit-button' class='badge badge-info'>Edit</span>"+
+			"<span id='delete-button' class='badge badge-important'>x</span>"+
 			"</div>"+
 			"{{/editable}}"
 			
