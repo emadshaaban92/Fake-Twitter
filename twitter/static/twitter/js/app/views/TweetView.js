@@ -40,7 +40,7 @@ var TweetView = Backbone.View.extend({
 				Fetcher = "OFF"
 				var _template = "" +
 				"<div class='span8'>" +
-				"<h3><b>{{name}} </b> : <input type = 'text' id='edit-tweet' value = '{{text}}'/> </h3> " +
+				"<h3><b>{{name}} </b> : <input type = 'text' id='edit-tweet' class='span7' value = '{{text}}'/> </h3> " +
 				"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>" +
 				"</div>" +
 				"{{#editable}}" +
