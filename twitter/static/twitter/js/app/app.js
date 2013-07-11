@@ -1,4 +1,6 @@
 Backbone.Tastypie.csrfToken = $.cookie( 'csrftoken' );
+var Fetcher = "ON"
+
 var tweets = new Tweets();
 var tv = new TweetsView({collection : tweets});
 tweets.fetch({
@@ -30,5 +32,7 @@ $(document).ready(function() {
 
 setInterval(function(){ 
     //code goes here that will be run every 5 seconds. 
-    tweets.fetch();  
+    if(Fetcher === "ON"){
+    	tweets.fetch();  
+	}
 }, 5000);

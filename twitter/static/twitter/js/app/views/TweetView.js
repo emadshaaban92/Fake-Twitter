@@ -4,19 +4,19 @@ var TweetView = Backbone.View.extend({
 		
 		var _template = "" +
 			"{{#editable}}" +
-			"<button type='button' class='close'>&times;</button>"+
-			"<button type='button' class='close'>&times;</button>"+
+			"<button type='button' id='delete-button' class='close'> &times; </button>"+
+			"<button type='button' id='edit-button' class='close'> edit </button>"+
 			"{{/editable}}" +
 			"<h3><b>{{name}} </b> : {{text}}</h3> " +
 			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"
 		
-		rendered = Mustache.to_html(_template, this.model.toJSON());
-		this.$el.html(rendered)
+		this._render(_template);
 
-		var temp =	"<button type='button' class='close'>&times;</button>" +
-			"<h1>" + this.model.get("text") + "</h1> " +
-			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"
-		
+	},
+	_render : function(_template){
+		rendered = Mustache.to_html(_template, this.model.toJSON());
+		this.$el.html(rendered);
+
 	},
 	initialize: function(){
 		this.model.on('hide', this.remove, this);
@@ -25,9 +25,29 @@ var TweetView = Backbone.View.extend({
 		
 	},
 	events : {
-		'click button' : function(){
+		'click #delete-button' : function(){
 			if(this.model.get("editable")){
 				this.model.destroy();
+			}
+		},
+		'click #edit-button' : function(){
+			if(this.model.get("editable")){
+				Fetcher = "OFF"
+				var _template = "" +
+				"<h3><b>{{name}} </b> : <input type = 'text' id='edit-tweet' value = '{{text}}'/> </h3> " +
+				"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"
+			
+				this._render(_template);
+				this.$el.find('#edit-tweet').focus();
+			}
+		},
+		'keypress #edit-tweet' : function(e){
+			if(this.model.get("editable") && e.which == 13){
+				this.model.set("text", this.$el.find('#edit-tweet').val());
+				this.model.save();
+				Fetcher = "ON"
+				tweets.fetch();
+				
 			}
 		}
 	},
