@@ -53,8 +53,15 @@ var TweetsView = Backbone.View.extend({
 		tweetView.render();
 		this.$el.prepend(tweetView.el);
 	},
+	appendOne : function(tweet){
+		tweetView = new TweetView({model : tweet});
+		tweetView.render();
+		this.$el.append(tweetView.el);
+	},
 	addAll : function(){
 		this.$el.empty()
-		this.collection.forEach(this.addOne, this );
+		var c = this.collection
+		_.each(c.last(c.length).reverse(), this.appendOne, this);
+		//this.collection.forEach(this.appendOne, this );
 	}
 });
