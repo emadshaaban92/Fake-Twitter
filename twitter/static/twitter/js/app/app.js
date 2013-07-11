@@ -13,6 +13,8 @@ tweets.fetch({
 
 $(document).ready(function() {
 
+	$("#tweet-input").focus();
+
 	$("#tweet-btn").click(function(){
 		//alert($("#tweet-input").val())
 		var tweet = new Tweet({text : $("#tweet-input").val()});

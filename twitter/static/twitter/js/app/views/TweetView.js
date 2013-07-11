@@ -1,14 +1,19 @@
 var TweetView = Backbone.View.extend({
-	className : 'alert alert-info alert-block',
+	className : 'well row',//'alert alert-info alert-block',
 	render : function(){
 		
 		var _template = "" +
-			"{{#editable}}" +
-			"<button type='button' id='delete-button' class='close'> &times; </button>"+
-			"<button type='button' id='edit-button' class='close'> edit </button>"+
-			"{{/editable}}" +
+			"<div class='span8'>" +
 			"<h3><b>{{name}} </b> : {{text}}</h3> " +
-			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"
+			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"+
+			"</div>" +
+			"{{#editable}}" +
+			"<div class='span1 offset2'>"+
+			"<button id='delete-button' class='btn btn-danger span1'>Delete</button>"+
+			"<button id='edit-button' class='btn btn-primary span1'>Edit</button>"+
+			"</div>"+
+			"{{/editable}}"
+			
 		
 		this._render(_template);
 
@@ -34,20 +39,33 @@ var TweetView = Backbone.View.extend({
 			if(this.model.get("editable")){
 				Fetcher = "OFF"
 				var _template = "" +
+				"<div class='span8'>" +
 				"<h3><b>{{name}} </b> : <input type = 'text' id='edit-tweet' value = '{{text}}'/> </h3> " +
-				"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"
-			
+				"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>" +
+				"</div>" +
+				"{{#editable}}" +
+				"<div class='span1 offset2'>"+
+				"<button id='delete-button' class='btn btn-danger span1'> Delete </button>"+
+				"<button id='save-button' class='btn btn-success span1'> Save </button>"+
+				"</div>"+
+				"{{/editable}}"
+				
 				this._render(_template);
 				this.$el.find('#edit-tweet').focus();
 			}
 		},
-		'keypress #edit-tweet' : function(e){
-			if(this.model.get("editable") && e.which == 13){
+		'click #save-button' : function(){
+			if(this.model.get("editable")){
 				this.model.set("text", this.$el.find('#edit-tweet').val());
 				this.model.save();
 				Fetcher = "ON"
 				tweets.fetch();
+			}
+		},
+		'keypress #edit-tweet' : function(e){
+			if(this.model.get("editable") && e.which == 13){
 				
+				this.$el.find('#save-button').click();
 			}
 		}
 	},
