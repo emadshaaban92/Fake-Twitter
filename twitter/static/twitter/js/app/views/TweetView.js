@@ -99,7 +99,7 @@ var TweetsView = Backbone.View.extend({
 	addAll : function(){
 		this.$el.empty()
 		var c = this.collection
-		_.each(c.last(c.length).reverse(), this.appendOne, this);
-		//this.collection.forEach(this.appendOne, this );
+		//_.each(c.last(c.length).reverse(), this.appendOne, this);
+		this.collection.forEach(this.appendOne, this );
 	}
 });
