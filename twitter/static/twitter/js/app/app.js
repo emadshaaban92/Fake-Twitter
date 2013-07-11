@@ -16,6 +16,7 @@ $(document).ready(function() {
 		var tweet = new Tweet({text : $("#tweet-input").val()});
 		tweet.save();
 		tweets.add(tweet);
+		$("#tweet-input").val("");
 	});
 
 	$("#tweet-input").keypress(function(e) {
