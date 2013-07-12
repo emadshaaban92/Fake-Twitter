@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     #(r'^accounts/login/$',  login),
     #(r'^accounts/logout/$', logout, {'next_page': '/'}),
     (r'^accounts/profile/$', RedirectView.as_view(url='/')),
-    (r'^accounts/', include('registration.backends.default.urls')),
+    (r'^accounts/', include('allauth.urls')),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     
 )

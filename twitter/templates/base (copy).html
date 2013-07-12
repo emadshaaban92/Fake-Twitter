@@ -49,8 +49,8 @@
           <li><a rel="tooltip" href="/accounts/logout"  data-original-title="Don't do this please !">Sign Out <i class="icon-share-alt"></i></a>
           </li>
           {% else %}
-          <li><a rel="tooltip" href="#signupModal" data-toggle="modal" data-original-title="Please take a minute to register">Sign Up <i class="icon-share-alt"></i></a></li>
-          <li><a rel="tooltip" href="#loginModal" data-toggle="modal" data-original-title="Please login to tweet">Sign In <i class="icon-share-alt"></i></a>
+          <li><a rel="tooltip" href="/accounts/signup/" data-original-title="Please take a minute to register">Sign Up <i class="icon-share-alt"></i></a></li>
+          <li><a rel="tooltip" href="/accounts/login"  data-original-title="Please login to tweet">Sign In <i class="icon-share-alt"></i></a>
           </li>
           {% endif %}
           
@@ -59,88 +59,6 @@
      </div>
    </div>
  </div>
-
-
-<!-- Modal -->
-<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Sign In</h3>
-  </div>
-  <form class="login" method="POST" action="/accounts/login/">
-
-  <div class="modal-body">
-    <p>Please sign in with one
-      of your existing third party accounts. Or, <a href="/accounts/signup/">sign up</a> 
-      for a 127.0.0.1:8000 account and sign in below:</p>
-
-    <div class="socialaccount_ballot">
-
-      <ul class="socialaccount_providers">
-        
-
-
-
-    <li>
-      <a title="Facebook" class="socialaccount_provider facebook" 
-         href="/accounts/facebook/login/?process=login">Facebook</a>
-    </li>
-
-
-
-      </ul>
-
-      <div class="login-or">or</div>
-
-    </div>
-
-
-      <input type='hidden' name='csrfmiddlewaretoken' value='GAtb6ce58wGfowoIgXFRuTHnubqxWpEA' />
-      <p><label for="id_login">Username:</label> <input id="id_login" maxlength="30" name="login" placeholder="Username" type="text" /></p>
-    <p><label for="id_password">Password:</label> <input id="id_password" name="password" placeholder="Password" type="password" /></p>
-    <p><label for="id_remember">Remember Me:</label> <input id="id_remember" name="remember" type="checkbox" /></p>
-      
-      <a class="button secondaryAction" href="/accounts/password/reset/">Forgot Password?</a>
-      
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    <button class="btn btn-primary" type="submit">Sign In</button>
-  </div>
-  </form>
-
-</div>
-
-
-
-<!-- Modal -->
-<div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Sign Up</h3>
-  </div>
-  <form class="signup" id="signup_form" method="post" action="/accounts/signup/">
-
-  <div class="modal-body">
-    
-
-      <input type='hidden' name='csrfmiddlewaretoken' value='GAtb6ce58wGfowoIgXFRuTHnubqxWpEA' />
-  <p><label for="id_username">Username:</label> <input id="id_username" maxlength="30" name="username" placeholder="Username" type="text" /></p>
-<p><label for="id_email">E-mail (optional):</label> <input id="id_email" name="email" placeholder="E-mail address" type="text" /></p>
-<p><label for="id_password1">Password:</label> <input id="id_password1" name="password1" placeholder="Password" type="password" /></p>
-<p><label for="id_password2">Password (again):</label> <input id="id_password2" name="password2" placeholder="Password" type="password" /><input id="id_confirmation_key" name="confirmation_key" type="hidden" /></p>
-
-      
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    <button class="btn btn-primary" type="submit">Sign Up &raquo;</button>
-  </div>
-  </form>
-
-</div>
-
-
 
 
 
