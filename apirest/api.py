@@ -11,7 +11,7 @@ from twitter.models import Tweet, Tweeter
 class TweetResource(ModelResource):
     #tweeter_id = fields.IntegerField(readonly=True)
     class Meta:
-        queryset = Tweet.objects.all().order_by('-id')
+        queryset = Tweet.objects.order_by('-id')
         resource_name = 'tweet'
         always_return_data = True
 

@@ -147,7 +147,6 @@ INSTALLED_APPS = (
     
     'twitter',
     'registration',
-    'rest_framework',
     
 
     # 3rd party apps
