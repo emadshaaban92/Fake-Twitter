@@ -11,7 +11,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 from os import environ
-from urlparse import urlparse
+#from urlparse import urlparse
 
 if environ.has_key('DATABASE_URL'):
     # Parse database configuration from $DATABASE_URL
