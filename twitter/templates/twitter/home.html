@@ -2,10 +2,15 @@
 {% load static %}
 
 {% block content %}
-  	<div class="row">
-	  <input type = "text" id="tweet-input" class="span10" value="Tweet Here!"/>
-	  <button class="btn btn-primary span2" id="tweet-btn">Tweet</button>
-	</div>
+  	{% if user.is_authenticated %}
+    <div class="row">
+    	  <input type = "text" id="tweet-input" class="span10" value="Tweet Here!"/>
+    	  <button class="btn btn-primary span2" id="tweet-btn">Tweet</button>
+	   </div>
+     {% else %}
+        
+
+     {% endif %}
   <div id="tweets">
 
   </div>
@@ -18,4 +23,19 @@
     <script src="{% static 'twitter/js/app/views/TweetView.js' %}"></script>
     <script src="{% static 'twitter/js/app/app.js' %}"></script>
 
+    {% if user.is_authenticated %}
+
+    {% else %}
+      
+        <script type="text/javascript">
+              $(document).ready(function() {
+
+                $('#loginModal').modal({
+                    keyboard: false,
+                  })
+              });
+        </script>
+    {% endif %}
+
 {% endblock %}  
+
