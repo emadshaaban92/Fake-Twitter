@@ -93,13 +93,15 @@ STATIC_ROOT = os.path.join(ROOT_PATH, 'static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
+STATIC_URL = 'https://dl.dropboxusercontent.com/u/119083415/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    # Don't forget to use abs/#olute paths, not relative paths.
+    #os.path.join(ROOT_PATH, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -187,6 +189,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     
     'avatar',
+    'django_dropbox',
 )
 
 
@@ -225,3 +228,14 @@ LOGGING = {
 
 #ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 ACCOUNT_EMAIL_REQUIRED = True
+
+
+DROPBOX_CONSUMER_KEY = 'z5d1j6sidlxbi4y'
+DROPBOX_CONSUMER_SECRET = 'cz51n42g3cfshax'
+DROPBOX_ACCESS_TOKEN = 's4wsfa1duqbp67jg'
+DROPBOX_ACCESS_TOKEN_SECRET = '3s75bhs0bdwjfgk'
+
+#from django_dropbox.storage import DropboxStorage
+
+DEFAULT_FILE_STORAGE = 'django_dropbox.storage.DropboxStorage'
+STATICFILES_STORAGE = 'django_dropbox.storage.DropboxStorage'
