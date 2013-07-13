@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load avatar_tags %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +11,9 @@
 	<meta name="description" content="Fake Twitter Prototype using Django">
 	<meta name="author" content="Emad Shaaban">
 
-	<link href="{% static 'twitter/css/bootstrap.min.css' %}" rel="stylesheet">
-	<link href="{% static 'twitter/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
-	<link href="{% static 'twitter/css/font-awesome.min.css' %}" rel="stylesheet">
-	<link href="{% static 'twitter/css/bootswatch.css' %}" rel="stylesheet">
-
+	<link href="http://www.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="http://www.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	
 
 </head>
 
@@ -86,9 +85,7 @@
       <a title="Facebook" class="socialaccount_provider facebook" 
          href="/accounts/facebook/login/?process=login">Facebook</a>
     </li>
-
-
-
+    
       </ul>
 
       <div class="login-or">or</div>
@@ -202,20 +199,16 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'twitter/js/jquery.min.js' %}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{% static 'twitter/js/jquery.cookie.js' %}"></script>
-    <script src="{% static 'twitter/js/jquery.smooth-scroll.min.js' %}"></script>
-    <script src="{% static 'twitter/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'twitter/js/bootswatch.js' %}"></script>
+    <script src="http://www.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
+    <script src="{% static 'twitter/js/backbone-tastypie.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
 
-    <script src="{% static 'twitter/js/libs/underscore/underscore-min.js' %}"></script>
-    <script src="{% static 'twitter/js/libs/backbone/backbone-min.js' %}"></script>
-    <script src="{% static 'twitter/js/libs/backbone/backbone-tastypie.js' %}"></script>
-    <script src="{% static 'twitter/js/libs/backbone/backbone-mediator.js' %}"></script>
-    <script src="{% static 'twitter/js/libs/backbone/supermodel.js' %}"></script>
-    <script src="{% static 'twitter/js/libs/moment/moment.min.js' %}"></script>
-
-    <script src="{% static 'twitter/js/libs/mustache/mustache.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
 
     
     

@@ -18,12 +18,14 @@
 {% endblock %}
 
 {% block scripts %}
-  	<script src="{% static 'twitter/js/app/models/Tweet.js' %}"></script>
+  	
+
+    {% if user.is_authenticated %}
+
+    <script src="{% static 'twitter/js/app/models/Tweet.js' %}"></script>
     <script src="{% static 'twitter/js/app/collections/Tweets.js' %}"></script>
     <script src="{% static 'twitter/js/app/views/TweetView.js' %}"></script>
     <script src="{% static 'twitter/js/app/app.js' %}"></script>
-
-    {% if user.is_authenticated %}
 
     {% else %}
       
