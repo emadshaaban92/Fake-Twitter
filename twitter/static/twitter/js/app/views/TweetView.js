@@ -4,8 +4,9 @@ var TweetView = Backbone.View.extend({
 		
 		var _template = "" +
 			"<div class='span8'>" +
-			"<h3><b>{{name}} </b> : {{text}}</h3> " +
-			"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"+
+			this.model.get("avatar_url") +
+			"<span class='lead'>  {{text}}</span><br /> " +
+			"<span> By : <b>{{name}}</b> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>"+
 			"</div>" +
 			"{{#editable}}" +
 			"<div class='span1 offset2 btn-group'>"+
@@ -40,8 +41,9 @@ var TweetView = Backbone.View.extend({
 				Fetcher = "OFF"
 				var _template = "" +
 				"<div class='span8'>" +
-				"<h3><b>{{name}} </b> : <input type = 'text' id='edit-tweet' class='span7' value = '{{text}}'/> </h3> " +
-				"<span> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>" +
+				this.model.get("avatar_url") +
+				"<span class='lead'>  <input type = 'text' id='edit-tweet' class='span7' value = '{{text}}'/> </span> <br />" +
+				"<span>By : <b>{{name}}</b> From : " + moment(this.model.get("created")).add('hours',7).fromNow() + "</span>" +
 				"</div>" +
 				"{{#editable}}" +
 				"<div class='span1 offset2 btn-group'>"+

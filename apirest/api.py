@@ -3,6 +3,8 @@ from tastypie.authorization import Authorization
 from tastypie.authentication import SessionAuthentication
 from tastypie import fields
 
+from avatar.templatetags.avatar_tags import avatar
+
 from .Auth import UserObjectsOnlyAuthorization
 
 from twitter.models import Tweet, Tweeter
@@ -29,6 +31,7 @@ class TweetResource(ModelResource):
         bundle.data['editable'] = (bundle.obj.tweeter_id == bundle.request.user.id)
         bundle.data['tweeter_id'] = bundle.obj.tweeter_id
         bundle.data['name'] = bundle.obj.tweeter.username
+        bundle.data['avatar_url'] = avatar(bundle.obj.tweeter,50)
         return bundle
 
 class TweeterResource(ModelResource):
