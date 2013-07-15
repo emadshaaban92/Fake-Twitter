@@ -1,0 +1,50 @@
+{% load i18n avatar_tags %}
+{% load url from future %}
+
+<!-- Modal -->
+<div id="infoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="infoModalLabel">Edit Profile</h3>
+  </div>
+  <div class="modal-body">
+  
+      <i>{% trans "Your current avatar: " %}</i>
+        {% avatar user %}
+        {% if not avatars %}
+            <i>{% trans "You haven't uploaded an avatar yet. Please upload one now." %}</i>
+        {% else %}
+            <br />
+            <form id="changeAvatarForm" method="POST" action="{% url 'avatar_change' %}">
+                <div class="row">
+                <div class="span1"><br /> You have {{avatars.count}} avatars to choose from </div>
+                <ul class="horizontal-slide thumbnails span4 offset2" data-toggle="buttons-radio">
+                    {% for av in avatars %}
+                        <li class="span1">
+                            <a href="#" av-id={{av.id}} {% if av.primary %} class="thumbnail active" {% else %} class="thumbnail" {% endif %}>
+                              <img src="{{av.get_absolute_url}}" alt="" />
+                            </a>
+                        </li>
+
+                
+                    {% endfor %}
+                </ul>
+                </div>
+                <input type='hidden' id="changeAvatarInput" name='choice' value='{{avatar.id}}' />
+                {% csrf_token %}<input type="submit" class="btn hide" value="{% trans "Set as Default" %}" />
+            </form>
+        {% endif %}
+        <br />
+        <form id="uploadAvatarForm" enctype="multipart/form-data" method="POST" action="{% url 'avatar_add' %}">
+            {{ upload_avatar_form.avatar }} {{ upload_avatar_form.avatar.errors }}
+            {% csrf_token %}<input type="submit" class="btn" value="{% trans "Upload New Image" %}" />
+        </form>
+      
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-primary" >Save</button>
+  </div>
+  
+</div>
+

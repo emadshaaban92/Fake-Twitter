@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div id="logoutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Sign Out</h3>
+  </div>
+  <form method="post" action="/accounts/logout/">
+
+  <div class="modal-body">
+    <p>Are you sure you want to sign out?</p>
+
+  {% csrf_token %}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-primary" type="submit">Sign Out</button>
+  </div>
+  </form>
+</div>
+

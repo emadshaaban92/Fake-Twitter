@@ -30,7 +30,12 @@ class TweetResource(ModelResource):
         # Include the request IP in the bundle.
         bundle.data['editable'] = (bundle.obj.tweeter_id == bundle.request.user.id)
         bundle.data['tweeter_id'] = bundle.obj.tweeter_id
-        bundle.data['name'] = bundle.obj.tweeter.username
+        if bundle.obj.tweeter.get_full_name() :
+            bundle.data['name'] = bundle.obj.tweeter.get_full_name()
+            bundle.data['ident'] = "full_name"
+        else :
+            bundle.data['name'] = bundle.obj.tweeter.username
+            bundle.data['ident'] = "username"
         bundle.data['avatar_url'] = avatar(bundle.obj.tweeter,50)
         return bundle
 

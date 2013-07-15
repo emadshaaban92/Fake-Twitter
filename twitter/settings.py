@@ -95,7 +95,7 @@ MEDIA_ROOT = os.path.join(ROOT_PATH, 'media')
 MEDIA_URL = '/media/'
 
 AVATAR_STORAGE_DIR = 'avatars'
-AUTO_GENERATE_AVATAR_SIZES = (30,50,80,100,)
+AUTO_GENERATE_AVATAR_SIZES = (30,50,80,100,400,600,1024)
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -240,5 +240,7 @@ LOGGING = {
 
 #ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 ACCOUNT_EMAIL_REQUIRED = True
+
+AVATAR_MAX_SIZE = 4000*3000
 
 

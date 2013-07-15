@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 {% load avatar_tags %}
 {% load socialaccount %}
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
 
 	<link href="http://www.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 	<link href="http://www.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<link href="{% static 'twitter/css/base.css' %}" rel="stylesheet">
 	
 
 </head>
@@ -38,13 +39,13 @@
         <ul class="nav pull-right" id="main-menu-right">
           {% if user.is_authenticated %}
 
-          <li><a rel="tooltip" href="#" data-original-title="">
+          <li><a rel="tooltip" href="#infoModal" data-toggle="modal" data-original-title="click to edit your info">
             Welcome, {% if user.first_name %}
-                        {{user.first_name}} {% avatar user.username 30 %}
+                        <b class="first_name">{{user.first_name}}</b> {% avatar user.username 30 %}
                       {% else %}
-                        {{user.username}} {% avatar user.username 30 %}
+                        <b class="username">{{user.username}}</b> {% avatar user.username 30 %}
                       {% endif %} 
-            <i class="icon-share-alt"></i></a>
+            <i class="icon-user"></i></a>
           </li>
           <li><a rel="tooltip" href="#logoutModal" data-toggle="modal"  data-original-title="Don't do this please !">Sign Out <i class="icon-share-alt"></i></a>
           </li>
@@ -61,106 +62,19 @@
  </div>
 
 
-<!-- Modal -->
-<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Sign In</h3>
-  </div>
-  <form class="login" method="POST" action="/accounts/login/">
-
-  <div class="modal-body">
-    <p>Please sign in with one
-      of your existing third party accounts. Or, <a href="/accounts/signup/">sign up</a> 
-      for a Fake Twitter account and sign in below:</p>
-
-    <div class="socialaccount_ballot">
-
-      <ul class="socialaccount_providers">
-        
+{% if user.is_authenticated %}
+    {% include 'modals/logoutModal.html' %}
 
 
-
-    <li>
-      <a title="Facebook" class="socialaccount_provider facebook" 
-         href="/accounts/facebook/login/?process=login">Facebook</a>
-    </li>
+    {% include 'modals/infoModal.html' %}
     
-      </ul>
+{% else %}
 
-      <div class="login-or">or</div>
+    {% include 'modals/loginModal.html' %}
 
-    </div>
+    {% include 'modals/signupModal.html' %}
 
-
-      {% csrf_token %}
-      <p><label for="id_login">Username:</label> <input id="id_login" maxlength="30" name="login" placeholder="Username" type="text" /></p>
-    <p><label for="id_password">Password:</label> <input id="id_password" name="password" placeholder="Password" type="password" /></p>
-    <p><label for="id_remember">Remember Me:</label> <input id="id_remember" name="remember" type="checkbox" /></p>
-      
-      <a class="button secondaryAction" href="/accounts/password/reset/">Forgot Password?</a>
-      
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    <button class="btn btn-primary" type="submit">Sign In</button>
-  </div>
-  </form>
-
-</div>
-
-
-
-<!-- Modal -->
-<div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Sign Up</h3>
-  </div>
-  <form class="signup" id="signup_form" method="post" action="/accounts/signup/">
-
-  <div class="modal-body">
-    
-
-      {% csrf_token %}
-  <p><label for="id_username">Username:</label> <input id="id_username" maxlength="30" name="username" placeholder="Username" type="text" /></p>
-<p><label for="id_email">E-mail (optional):</label> <input id="id_email" name="email" placeholder="E-mail address" type="text" /></p>
-<p><label for="id_password1">Password:</label> <input id="id_password1" name="password1" placeholder="Password" type="password" /></p>
-<p><label for="id_password2">Password (again):</label> <input id="id_password2" name="password2" placeholder="Password" type="password" /><input id="id_confirmation_key" name="confirmation_key" type="hidden" /></p>
-
-      
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    <button class="btn btn-primary" type="submit">Sign Up &raquo;</button>
-  </div>
-  </form>
-
-</div>
-
-
-
-<!-- Modal -->
-<div id="logoutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Sign Out</h3>
-  </div>
-  <form method="post" action="/accounts/logout/">
-
-  <div class="modal-body">
-    <p>Are you sure you want to sign out?</p>
-
-  {% csrf_token %}
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-    <button class="btn btn-primary" type="submit">Sign Out</button>
-  </div>
-  </form>
-</div>
-
-
+{% endif %}
 
 
 <div class="container">
@@ -201,7 +115,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="{% static 'twitter/js/jquery.cookie.js' %}"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="http://www.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="http://gregpike.net/demos/bootstrap-file-input/bootstrap.file-input.js"></script>
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
@@ -210,7 +126,11 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
 
-    
+    <script type="text/javascript">
+        USERNAME = "{{user.username}}" ;
+        USERID = "{{user.id}}" ;
+        
+    </script>
     
     
   {% block scripts %}
