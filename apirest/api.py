@@ -1,11 +1,11 @@
 from tastypie.resources import ModelResource, ALL
-from tastypie.authorization import Authorization
+from tastypie.authorization import Authorization, DjangoAuthorization
 from tastypie.authentication import SessionAuthentication
 from tastypie import fields
 
 from avatar.templatetags.avatar_tags import avatar
 
-from .Auth import UserObjectsOnlyAuthorization
+from .Auth import UserObjectsOnlyAuthorization, UserDataOnlyAuthorization
 
 from twitter.models import Tweet, Tweeter
 
@@ -44,5 +44,6 @@ class TweeterResource(ModelResource):
         queryset = Tweeter.objects.all()
         resource_name = 'tweeter'
         always_return_data = True
-
-        authorization = Authorization()
+        
+        authentication = SessionAuthentication()
+        authorization = UserDataOnlyAuthorization()
