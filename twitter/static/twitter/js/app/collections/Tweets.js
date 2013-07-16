@@ -7,6 +7,8 @@ var Tweets = Backbone.Collection.extend({
 		},
       hideModel: function(model){
 			    model.trigger('hide');
+			    editable = tweets.filter(function(model) { return model.get("editable") });
+    	
 	  },
       contains : function(model){
 	               n = model.get("id");

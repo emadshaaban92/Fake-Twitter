@@ -13,20 +13,13 @@ class UserObjectsOnlyAuthorization(DjangoAuthorization):
 
     def create_list(self, object_list, bundle):
         # Assuming their auto-assigned to ``user``.
-        return object_list
+        raise Unauthorized("Sorry, You can't create list of tweets at once.")
 
     def create_detail(self, object_list, bundle):
         return True
 
     def update_list(self, object_list, bundle):
-        allowed = []
-
-        # Since they may not all be saved, iterate over them.
-        for obj in object_list:
-            if True :#obj.user == bundle.request.user:
-                allowed.append(obj)
-
-        return allowed
+        raise Unauthorized("Sorry, You can't update list of tweets at once.")
 
     def update_detail(self, object_list, bundle):
         if bundle.obj.tweeter_id == bundle.request.user.id :
