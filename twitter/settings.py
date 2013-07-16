@@ -20,16 +20,21 @@ if environ.has_key('DATABASE_URL'):
 
     # Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    DROPBOX_CONSUMER_KEY = 'z5d1j6sidlxbi4y'
-    DROPBOX_CONSUMER_SECRET = 'cz51n42g3cfshax'
-    DROPBOX_ACCESS_TOKEN = 's4wsfa1duqbp67jg'
-    DROPBOX_ACCESS_TOKEN_SECRET = '3s75bhs0bdwjfgk'
+    DROPBOX_CONSUMER_KEY = environ.get('DROPBOX_CONSUMER_KEY')
+    DROPBOX_CONSUMER_SECRET = environ.get('DROPBOX_CONSUMER_SECRET')
+    DROPBOX_ACCESS_TOKEN = environ.get('DROPBOX_ACCESS_TOKEN')
+    DROPBOX_ACCESS_TOKEN_SECRET = environ.get('DROPBOX_ACCESS_TOKEN_SECRET')
 
     #from django_dropbox.storage import DropboxStorage
 
     DEFAULT_FILE_STORAGE = 'django_dropbox.storage.DropboxStorage'
     STATICFILES_STORAGE = 'django_dropbox.storage.DropboxStorage'
     STATIC_URL = 'https://dl.dropboxusercontent.com/u/119083415/'
+    
+    EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'
+    POSTMARK_API_KEY    = environ.get('POSTMARK_API_KEY')
+    POSTMARK_SENDER     = 'emad_gad@alex-comm.edu.eg'
+
 
     
 else:
@@ -45,14 +50,8 @@ else:
         }
     STATIC_URL = '/static/'
 
-    #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#EMAIL_BACKEND = "postmark.backends.PostmarkBackend"
-#POSTMARK_API_KEY = '3f0a6af2-d902-4f9d-a0b6-84065d4192e4'
-EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'
-POSTMARK_API_KEY    = '3f0a6af2-d902-4f9d-a0b6-84065d4192e4'
-POSTMARK_SENDER     = 'emad_gad@alex-comm.edu.eg'
-#POSTMARK_TEST_MODE  = False
 
 
 DEFAULT_FROM_EMAIL = 'emad_gad@alex-comm.edu.eg'

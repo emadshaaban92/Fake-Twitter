@@ -1,7 +1,5 @@
 from django.conf import settings
 from twitter.settings import *
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'kbu)p53+fm&a##ulci0#tbjv$=lxselottisu43t=&n3^m^du4'
 
 
 try:
