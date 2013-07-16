@@ -61,7 +61,7 @@ class UserDataOnlyAuthorization(DjangoAuthorization):
         raise Unauthorized("Sorry, You can't create list of users at once.")
 
     def create_detail(self, object_list, bundle):
-        return True
+        raise Unauthorized("Sorry, You can't create a user via the API, please use the registeration form.")
 
     def update_list(self, object_list, bundle):
         raise Unauthorized("Sorry, You can't update list of users at once.")
